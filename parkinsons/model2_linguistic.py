@@ -1,5 +1,20 @@
 """
-Model 2: Linguistic-Based Parkinson's Disease Detection
+=============================================================
+MODEL 2 — Linguistic-Based Parkinson's Disease Detection
+Disease  : Parkinson's Disease (PD)
+Modality : Linguistic only
+Dataset  : Spontaneous Dialogue (Linguistic) — PD vs HC
+Transcript: Whisper base.en (CLI, word timestamps)
+Features : 30 linguistic features (TTR, vocab, sentence stats,
+           function-word ratio, disfluencies, pause timing,
+           speech rate, articulation rate)
+Model    : XGBoost
+Selection: SelectKBest (Mutual Information, top 15)
+Sampling : SMOTE (k=3)
+CV       : Leave-One-Out (LOO-CV)
+Results  : Accuracy 0.528 | Precision 0.417 | Recall 0.333
+           F1 0.370 | ROC-AUC 0.568
+=============================================================
 Fixes applied:
   - Whisper CLI with base.en model (avoids PyTorch segfault, better quality)
   - LOOCV instead of 5-fold

@@ -1,5 +1,19 @@
 """
-Model 3: Fusion (Acoustic + Linguistic) Parkinson's Detection
+=============================================================
+MODEL 3 — Fusion (Acoustic + Linguistic) Parkinson's Detection
+Disease  : Parkinson's Disease (PD)
+Modality : Acoustic + Linguistic (fusion)
+Dataset  : Spontaneous Dialogue — PD vs HC
+Transcript: Whisper base.en (cached from Model 2)
+Features : 144 combined (115 acoustic + 29 linguistic)
+           MI selection keeps top 25
+Model    : XGBoost
+Selection: SelectKBest (Mutual Information, top 25)
+Sampling : SMOTE (k=3)
+CV       : Leave-One-Out (LOO-CV)
+Results  : Accuracy 0.694 | Precision 0.625 | Recall 0.667
+           F1 0.645 | ROC-AUC 0.756
+=============================================================
 Uses SpontaneousDialogue dataset only.
 - Acoustic features extracted via librosa from the raw audio
 - Linguistic features from Whisper base.en transcripts (cached)

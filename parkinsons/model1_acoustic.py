@@ -1,5 +1,19 @@
 """
-Model 1: Acoustic-Based Parkinson's Disease Detection
+=============================================================
+MODEL 1 — Acoustic-Based Parkinson's Disease Detection
+Disease  : Parkinson's Disease (PD)
+Modality : Acoustic only
+Dataset  : ReadText (Acoustic) — PD vs Healthy Controls (HC)
+Features : 115 acoustic features (MFCCs, delta-MFCCs, F0,
+           jitter, shimmer, spectral, ZCR, chroma, mel,
+           tonnetz, onset rate, pause ratio)
+Model    : XGBoost
+Selection: SelectKBest (Mutual Information, top 20)
+Sampling : SMOTE (k=3)
+CV       : Leave-One-Out (LOO-CV)
+Results  : Accuracy 0.730 | Precision 0.714 | Recall 0.625
+           F1 0.667 | ROC-AUC 0.729
+=============================================================
 Fixes applied:
   - LOOCV instead of 5-fold (better for N=37)
   - Mutual-information feature selection inside the CV pipeline (no leakage)
